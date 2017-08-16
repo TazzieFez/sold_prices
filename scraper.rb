@@ -33,7 +33,14 @@ url = 'https://www.domain.com.au/sold-listings/?suburb=pascoe-vale-south-vic-304
 page = agent.get(url)
 
  
- p page.search('.listing-result__address')
+ page.search('.listing-result__address').each do |li|
+    house = {
+      address: li.at('.listing-result__left a meta').attr('content'),
+      price: li.at('.listing-result__price').inner_text.strip,
+      beds: li.at('.property-feature__feature-text-container').inner_text,
+    }
+
+    p house
 
     # ScraperWiki.save_sqlite([:title], member)
 
