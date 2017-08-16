@@ -28,20 +28,12 @@ require 'mechanize'
 require 'scraperwiki'
 
 agent = Mechanize.new
-url = 'https://morph.io/documentation/examples/australian_members_of_parliament'
+url = 'https://www.domain.com.au/sold-listings/?suburb=pascoe-vale-south-vic-3044,coburg-vic-3058,brunswick-west-vic-3055'
 
-["1", "2", "3"].each do |page_number|
-  page = agent.get(url + "?page=" + page_number)
+page = agent.get(url)
 
-  page.at('.search-filter-results').search('li').each do |li|
-    member = {
-      title: li.at('.title').inner_text.strip,
-      electorate: li.search('dd')[0].inner_text,
-      party: li.search('dd')[1].inner_text,
-      url: li.at('.title a').attr('href')
-    }
+ p page.at('.listing-result__address')
 
-    p member
-    ScraperWiki.save_sqlite([:title], member)
-  end
-end
+    # ScraperWiki.save_sqlite([:title], member)
+
+
