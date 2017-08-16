@@ -35,7 +35,7 @@ page = agent.get(url)
  
  page.search('.listing-result__address').each do |li|
     house = {
-      address: li.at('.listing-result__left a meta').attr('content'),
+      address: li.at('.listing-result__left a meta'),
       price: li.at('.listing-result__price').inner_text.strip,
       beds: li.at('.property-feature__feature-text-container').inner_text
     }
