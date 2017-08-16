@@ -5,9 +5,9 @@ This scraper takes sold property data from the [Domain](https://www.domain.com.a
 
 This is a ruby based scraper that uses [Mechanize](https://github.com/sparklemotion/mechanize) and runs  on [Morph](https://morph.io).
 
-## Use this for your self
+## Use this for yourself
 
-To use the scraper, make a new scaper on [Morph](https://morph.io) and copy the scraper.rb file to your [GitHub](github.com) repo. 
+To use the scraper, make a new scraper on [Morph](https://morph.io) and copy the scraper.rb file to your [GitHub](github.com) repo. 
 
 You can then update the 'urlbase' variable to take account of where you can looking for property (change suburbs) and any other filters you want to apply (such as max price or minimum bedrooms). 
 
