@@ -37,10 +37,11 @@ page = agent.get(url)
     house = {
       address: li.at('.listing-result__left a meta').attr('content'),
       price: li.at('.listing-result__price').inner_text.strip,
-      beds: li.at('.property-feature__feature-text-container').inner_text,
+      beds: li.at('.property-feature__feature-text-container').inner_text
     }
 
     p house
+ end
 
     # ScraperWiki.save_sqlite([:title], member)
 
