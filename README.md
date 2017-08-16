@@ -5,7 +5,7 @@ This scraper takes sold property data from the [Domain](https://www.domain.com.a
 
 This is a ruby based scraper that uses [Mechanize](https://github.com/sparklemotion/mechanize) and runs  on [Morph](https://morph.io).
 
-##Use this for your self
+## Use this for your self
 
 To use the scraper, make a new scaper on [Morph](https://morph.io) and copy the scraper.rb file to your [GitHub](github.com) repo. 
 
