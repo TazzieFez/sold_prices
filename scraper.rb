@@ -2,14 +2,16 @@ require 'mechanize'
 require 'scraperwiki'
 
 agent = Mechanize.new
-urlbase = 'https://www.domain.com.au/sold-listings/?suburb=pascoe-vale-south-vic-3044,coburg-vic-3058,brunswick-west-vic-3055&ptype=duplex,house,semi-detached,terrace,town-house,villa&price=0-1500000'
+urlbase = 'https://www.domain.com.au/sold-listings/?suburb=pascoe-vale-south-vic-3044,coburg-vic-3058,brunswick-west-vic-3055&ptype=duplex,house,semi-detached,terrace,town-house,villa&price=0-1500000&sort=solddate-desc'
 
+  p "page 1"
   page = agent.get(urlbase)
+  houseno = 1
   
-  page.search('.listing-result__standard-premium').each do |li|
+  page.search('.listing-result__standard-standard , .listing-result__standard-premium, .listing-result__standard-pp').each do |li|
     street_add = li.at('.listing-result__address-line-1 span:nth-child(1)').inner_text
     suburb = li.at('.listing-result__address-line-2 span:nth-child(1)').inner_text
-    dateall = li.at('.listing-result__hero > span').inner_text
+    dateall = li.at('.listing-result__hero > span , .listing-result__left > span').inner_text
     sold_type = ''
     date = ''
     if dateall.include?('Sold at auction')
@@ -31,20 +33,24 @@ urlbase = 'https://www.domain.com.au/sold-listings/?suburb=pascoe-vale-south-vic
       }
 
      p house
-     ScraperWiki.save_sqlite([:address], house)
+         ScraperWiki.save_sqlite([:address], house)
+     p houseno
+     houseno += 1
+
   end
   
   i = 2
   
-  while i <= 50 do
+  while i <= 25 do
     
     url = urlbase + "&page=" + i.to_s
+    p "page " + i.to_s
     page = agent.get(url)
     
-    page.search('.listing-result__standard-pp').each do |li|
+    page.search('.listing-result__standard-standard , .listing-result__standard-premium, .listing-result__standard-pp').each do |li|
     street_add = li.at('.listing-result__address-line-1 span:nth-child(1)').inner_text
     suburb = li.at('.listing-result__address-line-2 span:nth-child(1)').inner_text
-    dateall = li.at('.listing-result__left > span').inner_text
+    dateall = li.at('.listing-result__hero > span , .listing-result__left > span').inner_text
     sold_type = ''
     date = ''
     if dateall.include?('Sold at auction')
@@ -66,7 +72,12 @@ urlbase = 'https://www.domain.com.au/sold-listings/?suburb=pascoe-vale-south-vic
       }
 
      p house
-     ScraperWiki.save_sqlite([:address], house)
+           ScraperWiki.save_sqlite([:address], house)
+     p houseno
+     houseno += 1
   end
   i += 1
+  sleep 1
 end
+
+
