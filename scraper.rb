@@ -29,6 +29,8 @@ urlbase = 'https://www.domain.com.au/sold-listings/?suburb=pascoe-vale-south-vic
         baths: li.at('.listing-result__left div span:nth-child(3) span span:nth-child(1)').inner_text,
         parking: li.at('.listing-result__left div span:nth-child(5) span span:nth-child(1)').inner_text,
         suburb: suburb,
+        lat: li.at('a div meta:nth-child(1)').attributes['content'].value,
+        long: li.at('a div meta:nth-child(2)').attributes['content'].value,
         sold_type: sold_type
       }
 
@@ -68,6 +70,8 @@ urlbase = 'https://www.domain.com.au/sold-listings/?suburb=pascoe-vale-south-vic
         baths: li.at('.listing-result__left div span:nth-child(3) span span:nth-child(1)').inner_text,
         parking: li.at('.listing-result__left div span:nth-child(5) span span:nth-child(1)').inner_text,
         suburb: suburb,
+        lat: li.at('a div meta:nth-child(1)').attributes['content'].value,
+        long: li.at('a div meta:nth-child(2)').attributes['content'].value,
         sold_type: sold_type
       }
 
