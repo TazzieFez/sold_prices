@@ -2,7 +2,7 @@ require 'mechanize'
 require 'scraperwiki'
 
 agent = Mechanize.new
-urlbase = 'https://www.domain.com.au/sold-listings/?suburb=coburg-north-vic-3058&ptype=duplex,house,semi-detached,terrace,town-house,villa&price=0-1500000&sort=solddate-desc'
+urlbase = 'https://www.domain.com.au/sold-listings/?suburb=brunswick-west-vic-3055,coburg-vic-3058,coburg-north-vic-3058,coburg-east-vic-3056,pascoe-vale-south-vic-3044&ptype=duplex,house,semi-detached,terrace,town-house,villa&price=0-1100000&sort=solddate-desc'
 
   p "page 1"
   page = agent.get(urlbase)
