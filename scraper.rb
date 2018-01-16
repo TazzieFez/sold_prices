@@ -7,6 +7,7 @@ urlbase = 'https://www.domain.com.au/sold-listings/maydena-tas-7140/?ssubs=1'
 
   p "First Page"
   page = agent.get(urlbase)
+  p page.title
   houseno = 1
   
   page.search('.listing-result__standard-standard , .listing-result__standard-premium, .listing-result__standard-pp').each do |li|
