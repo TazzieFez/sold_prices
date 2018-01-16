@@ -2,17 +2,14 @@ require 'mechanize'
 require 'scraperwiki'
 
 agent = Mechanize.new
-#urlbase = 'https://www.domain.com.au/sold-listings/?suburb=brunswick-west-vic-3055,coburg-vic-3058,coburg-north-vic-3058,coburg-east-vic-3056,pascoe-vale-south-vic-3044&ptype=duplex,house,semi-detached,terrace,town-house,villa&price=0-1100000&sort=solddate-desc'
-urlbase = 'https://www.domain.com.au/sold-listings/dodges-ferry-tas-7173/?ssubs=1'
+urlbase = 'https://www.domain.com.au/sold-listings/?suburb=coburg-vic-3058,brunswick-west-vic-3055,brunswick-vic-3056,brunswick-east-vic-3057&ptype=duplex,house,semi-detached,terrace,town-house,villa&price=0-1500000&sort=solddate-desc'
 
-  p "First Page"
+  p "page 1"
   page = agent.get(urlbase)
-  p page.title
   houseno = 1
   
   page.search('.listing-result__standard-standard , .listing-result__standard-premium, .listing-result__standard-pp').each do |li|
     street_add = li.at('.listing-result__address-line-1 span:nth-child(1)').inner_text
-    p "Address "
     suburb = li.at('.listing-result__address-line-2 span:nth-child(1)').inner_text
     dateall = li.at('.listing-result__hero > span , .listing-result__left > span').inner_text
     sold_type = ''
@@ -55,7 +52,6 @@ urlbase = 'https://www.domain.com.au/sold-listings/dodges-ferry-tas-7173/?ssubs=
     
     page.search('.listing-result__standard-standard , .listing-result__standard-premium, .listing-result__standard-pp').each do |li|
     street_add = li.at('.listing-result__address-line-1 span:nth-child(1)').inner_text
-    p "Address " + street_add
     suburb = li.at('.listing-result__address-line-2 span:nth-child(1)').inner_text
     dateall = li.at('.listing-result__hero > span , .listing-result__left > span').inner_text
     sold_type = ''
