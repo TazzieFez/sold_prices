@@ -11,6 +11,7 @@ urlbase = 'https://www.domain.com.au/sold-listings/maydena-tas-7140/?ssubs=1'
   
   page.search('.listing-result__standard-standard , .listing-result__standard-premium, .listing-result__standard-pp').each do |li|
     street_add = li.at('.listing-result__address-line-1 span:nth-child(1)').inner_text
+    p "Address " + street_add
     suburb = li.at('.listing-result__address-line-2 span:nth-child(1)').inner_text
     dateall = li.at('.listing-result__hero > span , .listing-result__left > span').inner_text
     sold_type = ''
